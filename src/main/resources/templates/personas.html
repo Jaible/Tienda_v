@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Persona</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 th:text="${titulo}"></h1>
+
+        <table class="table table-dark table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido 1</th>
+                    <th scope="col">Apellido 2</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Pais</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="user : ${personas}">
+                <tr>
+                    <td th:text="${user.getNombre}"></td>
+                    <td th:text="${user.getApellido1}"></td>
+                    <td th:text="${user.getApellido2}"></td>
+                    <td th:text="${user.getEmail}"></td>
+                    <td th:text="${user.getTelefono}"></td>
+                    <td th:text="${user.getPais.getPais}"></td>
+                    <td>
+                        <a href="@{/editPersona/{id}(id=${user.getId})}">Edit</a>
+                    </td>
+                    <td>
+                        <a href="@{/delete/{id}(id=${user.getId})}">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+</body>
+</html>
