@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="personas")
+@Table(name="paises")
 public class Pais implements Serializable{
     
     @Id
