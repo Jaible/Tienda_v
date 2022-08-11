@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xlmns:th="http://www.thymeleaf.org">
+<html xlmns:th="http://www.thymeleaf.org"
+      xlmns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head th:fragment="head">
         <title>Mi Tienda</title>
         <meta charset="UTF-8">
@@ -16,18 +17,18 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
+                        <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="#" th:ref="@{~/index}">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
+                            <li sec:authorize="isAuthenticated()" class="nav-item">
+                                <a class="nav-link" href="#" th:ref="@{~/profile/index}">Profile</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
+                            <li sec:authorize="hasRole('ROLE_USER')" class="nav-item">
+                                <a class="nav-link" href="#" th:ref="@{~/admin/index}">User</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled">Disabled</a>
+                            <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')" class="nav-item">
+                                <a class="nav-link" href="#" th:ref="@{~/management/index}">ADMIN</a>
                             </li>
                         </ul>
                     </div>
